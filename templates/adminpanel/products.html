@@ -1,13 +1,13 @@
-{%  extends 'adminpanel/adminbase.html' %}
+{% extends 'adminpanel/adminbase.html' %}
 
 {% load static %}
 {% block extracss %}
 <style>
 
 </style>
-    {% endblock extracss %}
+{% endblock extracss %}
 {% block content %}
-           
+
 <div class="text-center mx-auto mt-2 w-50"></div>
 
 <div class="container-fluid mt-3" style="min-height: 33rem;">
@@ -15,8 +15,10 @@
   <div class="d-flex justify-content-between">
     <input class="form-control w-50 mx-auto mb-3" type="search" placeholder="Search" aria-label="Search" id="myInput">
     <div class="">
-      <a href="{% url 'product_variations' %}"><button class="btn btn-info btn-sm mt-1 mr-3"><i class="fa fa-ellipsis-v mr-2"></i> Variations</button></a>
-      <a href="{% url 'addProduct' %}"><button class="btn btn-warning btn-sm mt-1 ml-3"><i class="fa fa-plus mr-2"></i> Add Product</button></a>
+      <a href="{% url 'product_variations' %}"><button class="btn btn-info btn-sm mt-1 mr-3"><i
+            class="fa fa-ellipsis-v mr-2"></i> Variations</button></a>
+      <a href="{% url 'addProduct' %}"><button class="btn btn-warning btn-sm mt-1 ml-3"><i class="fa fa-plus mr-2"></i>
+          Add Product</button></a>
     </div>
   </div>
   <table class="table table-hover">
@@ -35,16 +37,19 @@
       </tr>
     </thead>
     <tbody id="myTable">
-      
+
       {% for product in products %}
 
       <tr style="height: 50px !important;" class="text-wrap">
         <th scope="row">
           <div class="product-img d-flex flex-column">
-          <a href="{% url 'editProduct' product.id %}" class="text-dark text-center">
-          <div class="mx-auto"><img class="mx-auto" src="{{product.image_1.url}}" style="height:10vh ; object-fit:cover " ></div>
-          <div class="mx-auto">{{product.product_name}}</div></a>
-          </div></th>
+            <a href="{% url 'editProduct' product.id %}" class="text-dark text-center">
+              <div class="mx-auto"><img class="mx-auto" src="{{product.image_1.url}}"
+                  style="height:10vh ; object-fit:cover "></div>
+              <div class="mx-auto">{{product.product_name}}</div>
+            </a>
+          </div>
+        </th>
         <td>{{product.category}}</td>
         <td>{{product.sub_category}}</td>
         <td>₹{{product.price}}</td>
@@ -53,21 +58,25 @@
         <td>{{product.is_available}}</td>
         <td>{{product.is_featured}}</td>
         <td>
-          <div class="pro-img-overlay"><a href="{% url 'editProduct' product.id  %}" ><button class="btn btn-info btn-sm mt-1 mr-3"><i class="fa fa-edit text-light"></i>  edit</button></a>
-          </div> 
+          <div class="pro-img-overlay"><a href="{% url 'editProduct' product.id  %}"><button
+                class="btn btn-info btn-sm mt-1 mr-3"><i class="fa fa-edit text-light"></i> edit</button></a>
+          </div>
         </td>
         <td>
           <div class="pro-img-overlay">
-            <a href="{% url 'deleteProduct' product.id %}" ><button class="btn btn-info btn-sm mt-1 mr-3"><i class="fa fa-edit text-light"></i>  delete</button></a>
-          </div> 
+            <a href="{% url 'deleteProduct' product.id %}"><button class="btn btn-info btn-sm mt-1 mr-3"><i
+                  class="fa fa-edit text-light"></i> delete</button></a>
+          </div>
         </td>
       </tr>
 
-      <div class="modal fade" id="modal{{product.id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal fade" id="modal{{product.id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
         <div class="modal-dialog" role="document">
           <div class="modal-content">
             <div class="modal-header">
-                <a href="{% url 'deleteProduct' product.id %}" ><button class="btn btn-info btn-sm mt-1 mr-3"><i class="fa fa-edit text-warning"></i>delete</button></a>
+              <a href="{% url 'deleteProduct' product.id %}"><button class="btn btn-info btn-sm mt-1 mr-3"><i
+                    class="fa fa-edit text-warning"></i>delete</button></a>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
@@ -77,14 +86,14 @@
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
-              <a href="{% url 'deleteProduct' product.id %}"  type="button" class="btn btn-primary">Yes</a>
+              <a href="{% url 'deleteProduct' product.id %}" type="button" class="btn btn-primary">Yes</a>
             </div>
           </div>
         </div>
       </div>
-        
+
       {% endfor %}
-        
+
     </tbody>
   </table>
 
@@ -100,9 +109,10 @@
       {% endif %}
       <li class="page-item"><a class="page-link" href="?page={{ products.number }}">{{ products.number }}</a></li>
       {% if products.has_next %}
-      <li class="page-item"><a class="page-link" href="?page={{ products.next_page_number }}">{{ products.next_page_number }}</a></li>
+      <li class="page-item"><a class="page-link" href="?page={{ products.next_page_number }}">{{
+          products.next_page_number }}</a></li>
       {%endif%}
-  
+
       {% if products.has_next %}
       <li class="page-item">
         <a class="page-link" href="?page={{ products.next_page_number }}" aria-label="Next">
@@ -117,10 +127,10 @@
 </div>
 
 <script>
-  $(document).ready(function(){
-    $("#myInput").on("keyup", function() {
+  $(document).ready(function () {
+    $("#myInput").on("keyup", function () {
       var value = $(this).val().toLowerCase();
-      $("#myTable tr").filter(function() {
+      $("#myTable tr").filter(function () {
         $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
       });
     });

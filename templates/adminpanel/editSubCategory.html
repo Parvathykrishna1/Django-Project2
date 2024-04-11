@@ -1,11 +1,11 @@
-{%  extends 'adminpanel/adminbase.html' %}
+{% extends 'adminpanel/adminbase.html' %}
 
 {% load static %}
 {% block extracss %}
 <style>
 
 </style>
-    {% endblock extracss %}
+{% endblock extracss %}
 {% block content %}
 <div class="text-center mx-auto mt-2 w-50"></div>
 
@@ -15,36 +15,36 @@
     {% csrf_token %}
 
     <div class="col form-group">
-        <label >Sub Category Name</label><br>
-        {{form.sub_category_name}}  
+      <label>Sub Category Name</label><br>
+      {{form.sub_category_name}}
     </div>
     <div class="col form-group">
-        <label > Slug</label><br>
-        {{form.slug}}  
+      <label> Slug</label><br>
+      {{form.slug}}
     </div>
     <div class="col-6 form-group">
-        <label > Category</label><br>
-        {{form.category}}  
+      <label> Category</label><br>
+      {{form.category}}
     </div>
     <div class="col-6 form-group">
-      <label > Description</label><br>
-      {{form.description}}  
+      <label> Description</label><br>
+      {{form.description}}
     </div>
     <div class="col-6 form-group">
-      <label >Is Featured</label><br>
-      {{form.is_featured}}  
+      <label>Is Featured</label><br>
+      {{form.is_featured}}
     </div>
-                     
+
     <div class="col form-group">
-       <a href=""> <input type="submit" name="submit" id="submit" class="btn btn-warning" value="Save"/></a>
+      <a href=""> <input type="submit" name="submit" id="submit" class="btn btn-warning" value="Save" /></a>
     </div>
   </form>
 </div>
 
 <script>
-    document.getElementById("id_sub_category_name").onkeyup=function(){
-        document.getElementById("id_slug").value=document.getElementById("id_sub_category_name").value.toLowerCase().replaceAll(" ","-");
-      }
+  document.getElementById("id_sub_category_name").onkeyup = function () {
+    document.getElementById("id_slug").value = document.getElementById("id_sub_category_name").value.toLowerCase().replaceAll(" ", "-");
+  }
 </script>
 
 {% endblock content %}

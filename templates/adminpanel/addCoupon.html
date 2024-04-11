@@ -1,11 +1,11 @@
-{%  extends 'adminpanel/adminbase.html' %}
+{% extends 'adminpanel/adminbase.html' %}
 
 {% load static %}
 {% block extracss %}
 <style>
 
 </style>
-    {% endblock extracss %}
+{% endblock extracss %}
 {% block content %}
 
 <div class="text-center mx-auto mt-2 w-50"></div>
@@ -16,27 +16,27 @@
     {% csrf_token %}
 
     <div class="col-6 form-group">
-        <label > Code</label><br>
-        {{form.code}}  
+      <label> Code</label><br>
+      {{form.code}}
     </div>
     <div class="col-2 form-group">
-        <label > Discount</label><br>
-        {{form.discount}}
+      <label> Discount</label><br>
+      {{form.discount}}
     </div>
     <div class="col-2 form-group">
-        <label > Min Value</label><br>
-        {{form.min_value}}  
+      <label> Min Value</label><br>
+      {{form.min_value}}
     </div>
     <div class="col-2 form-group">
-        <label > Expiry Date</label><br>
-        {{form.valid_at}}
+      <label> Expiry Date</label><br>
+      {{form.valid_at}}
     </div>
     <div class="col form-group">
-      <label > Is Active</label><br>
-        {{form.active}}
+      <label> Is Active</label><br>
+      {{form.active}}
     </div>
     <div class="col form-group">
-       <a href=""> <input type="submit" name="submit" id="submit" class="btn btn-warning" value="Add Coupon"/></a>
+      <a href=""> <input type="submit" name="submit" id="submit" class="btn btn-warning" value="Add Coupon" /></a>
     </div>
   </form>
 </div>

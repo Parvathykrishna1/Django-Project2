@@ -14,26 +14,48 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+
 from django.contrib import admin
-from django.urls import path,include
+from django.urls import path, include
+from django.conf import settings
+from django.conf.urls.static import static
 from django.contrib.auth import views as auth_views
 from main.views import home
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('', include('accounts.urls')),
-    path('', include('main.urls')),
-    path('', include('adminpanel.urls')),
-    path('', include('shop.urls')),
-    path('', include('carts.urls')),
-    path('', include('orders.urls')),
-     path('', include('user.urls')),
-    path('home/', home, name='home'),
-    #path('accounts/', include('django.contrib.auth.urls')),
-    #path('accounts/', include('django.contrib.auth.urls')),
-    path('password_reset/done/', auth_views.PasswordResetDoneView.as_view(template_name='password/password_reset_done.html'), name='password_reset_done'),
-    path('reset/<uidb64>/<token>/', auth_views.PasswordResetConfirmView.as_view(template_name="password/password_reset_confirm.html"), name='password_reset_confirm'),
-    path('reset/done/', auth_views.PasswordResetCompleteView.as_view(template_name='password/password_reset_complete.html'), name='password_reset_complete'),    
- ]
+    path("admin/", admin.site.urls),
+    path("", include("accounts.urls")),
+    path("", include("main.urls")),
+    path("", include("adminpanel.urls")),
+    path("", include("shop.urls")),
+    path("", include("carts.urls")),
+    path("", include("orders.urls")),
+    path("", include("user.urls")),
+    path("home/", home, name="home"),
 
-handler404 = 'main.views.handler404'
+    path(
+        "password_reset/done/",
+        auth_views.PasswordResetDoneView.as_view(
+            template_name="password/password_reset_done.html"
+        ),
+        name="password_reset_done",
+    ),
+    path(
+        "reset/<uidb64>/<token>/",
+        auth_views.PasswordResetConfirmView.as_view(
+            template_name="password/password_reset_confirm.html"
+        ),
+        name="password_reset_confirm",
+    ),
+    path(
+        "reset/done/",
+        auth_views.PasswordResetCompleteView.as_view(
+            template_name="password/password_reset_complete.html"
+        ),
+        name="password_reset_complete",
+    ),
+]
+if settings.DEBUG:
+    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+
+handler404 = "main.views.handler404"

@@ -12,6 +12,4 @@ urlpatterns = [
   path('payments_completed/',payments_completed,name = 'payments_completed'),
 
 
-
-
 ]
