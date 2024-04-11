@@ -212,20 +212,6 @@ def edituser(request):
     return render(request, "accounts/useredit.html")
 
 
-def send_otp(request, phone_number):
-    TWILIO_AUTH_TOKEN = "7b42f350986d72fc85ddc0b7fa425b5b"
-    TWILIO_ACCOUNT_SID = "ACdc1055926dd49c11314f4c1ea70f3453"
-    TWILIO_PHONE_NUMBER = "+16203748524"
-    otp = random.randint(1000, 9999)
-    request.session["otp"] = otp
-    client = Client(TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN)
-    message = client.messages.create(
-        body=f"Your OTP is {otp}",
-        from_=TWILIO_PHONE_NUMBER,
-        to=("+91{}".format(phone_number)),
-    )
-    print(message)
-
 
 def verify_otp(request):
     error = ""
