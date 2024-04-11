@@ -185,7 +185,7 @@ def password_reset_request(request):
                         send_mail(
                             subject,
                             email,
-                            "pdjango55@gmail.com",
+                            "sharp-threads@gmail.com",
                             [user.email],
                             fail_silently=False,
                         )
